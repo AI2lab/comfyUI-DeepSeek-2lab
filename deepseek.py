@@ -14,7 +14,7 @@ key = json_data["DEEPSEEK_KEY"]
 NODE_CATEGORY = get_project_category("llm")
 
 class DeepSeekChat:
-    NAME = get_project_name('ChatGLM')
+    NAME = get_project_name('DeepSeek')
     CATEGORY = NODE_CATEGORY
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("text",)
