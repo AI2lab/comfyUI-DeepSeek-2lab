@@ -25,13 +25,14 @@ class DeepSeekChat:
         return {
             "required": {
                 "prompt": ("STRING", {"multiline": True}),
+                 "model": (["deepseek-chat","deepseek-coder"],{"default": "deepseek-chat"}),
             },
         }
 
-    def doWork(self,  prompt):
+    def doWork(self,  prompt, model):
         client = OpenAI(api_key=key, base_url="https://api.deepseek.com/")
         response = client.chat.completions.create(
-            model="deepseek-chat",
+            model=model,
             messages=[
                 {"role": "system", "content": "You are a helpful assistant"},
                 {"role": "user", "content": prompt},
