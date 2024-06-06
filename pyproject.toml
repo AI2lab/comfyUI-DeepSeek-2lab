@@ -10,6 +10,6 @@ Repository = "https://github.com/AI2lab/comfyUI-DeepSeek-2lab"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "ai2lab"
 DisplayName = "comfyUI-DeepSeek-2lab"
 Icon = ""
