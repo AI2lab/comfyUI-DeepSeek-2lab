@@ -2,7 +2,7 @@
 name = "comfyui-deepseek-2lab"
 description = "Unofficial implementation of DeepSeek for ComfyUI"
 version = "1.0.1"
-license = "LICENSE"
+license = { file = "LICENSE" }
 dependencies = ["openai"]
 
 [project.urls]
