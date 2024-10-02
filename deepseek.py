@@ -35,13 +35,20 @@ class DeepSeekChat:
                 "prompt": ("STRING", {"multiline": True}),
                  "model": (["deepseek-chat","deepseek-coder"],{"default": "deepseek-chat"}),
                  "purpose": (["general","coding","data analysis","translation","writing"],{"default": "general"}),
+                "max_tokens": ("INT",{
+                        "default": 256,
+                        "min": 16,
+                        "max": 2048,
+                        "display": "number",
+                    },
+                ),
             },
         }
 
-    def doWork(self,  prompt, model, purpose):
-        print("purpose = ",purpose)
+    def doWork(self,  prompt, model, purpose,max_tokens):
+        # print("purpose = ",purpose)
         temperature = purposeTemperatureMap[purpose]
-        print("temperature = ",temperature)
+        # print("temperature = ",temperature)
         client = OpenAI(api_key=key, base_url="https://api.deepseek.com/")
         response = client.chat.completions.create(
             model=model,
@@ -49,7 +56,8 @@ class DeepSeekChat:
             messages=[
                 {"role": "system", "content": "You are a helpful assistant"},
                 {"role": "user", "content": prompt},
-            ]
+            ],
+            max_tokens=max_tokens,
         )
         print(response.choices[0].message.content)
         return {"result": (response.choices[0].message.content,)}
